@@ -129,6 +129,64 @@
 .animate-delay-3000 { animation-delay: 3s; }
 .animate-delay-4000 { animation-delay: 4s; }
 
+/* Marquee animation for mobile payment logos */
+@keyframes marquee-right-to-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-right-to-left {
+  animation: marquee-right-to-left 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Slide up animation for live activity ticker */
+@keyframes slideUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Performance optimizations for animated elements */
+.payment-logo,
+.feature-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimized hover transitions using CSS instead of JS */
+.cta,
+.card-hover {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-marquee,
+  .animate-marquee-right-to-left,
+  .animate-pulse,
+  .animate-bounce,
+  .animate-spin,
+  .animate-float,
+  .animate-pulse-slow,
+  .animate-ping-slow,
+  .animate-gradient {
+    animation: none !important;
+  }
+}
+
 /* Optimized gradient animation */
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }

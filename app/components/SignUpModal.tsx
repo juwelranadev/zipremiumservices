@@ -141,7 +141,7 @@ export default function SignUpModal({ isOpen, onClose, onSignUp, onSignIn, onGoo
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                  <img src="/zi-logo.svg" alt="ZI Logo" className="w-8 h-8" />
+                  <img src="/zi-logo.svg" alt="ZI Logo" className="w-8 h-8" loading="lazy" />
                 </div>
                 <h1 className="text-2xl font-extrabold leading-tight whitespace-nowrap">
                   <span className="bg-gradient-to-r from-pink-500 via-amber-400 to-sky-500 bg-clip-text text-transparent drop-shadow-sm">
@@ -192,7 +192,7 @@ export default function SignUpModal({ isOpen, onClose, onSignUp, onSignIn, onGoo
               <div className="lg:hidden flex justify-center mb-8">
                 <div className="flex flex-col items-center gap-3 text-center">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                    <img src="/zi-logo.svg" alt="ZI Logo" className="w-8 h-8" />
+                    <img src="/zi-logo.svg" alt="ZI Logo" className="w-8 h-8" loading="lazy" />
                   </div>
                   <h1 className="text-xl font-extrabold leading-tight">
                     <span className="bg-gradient-to-r from-pink-500 via-amber-400 to-sky-500 bg-clip-text text-transparent drop-shadow-sm">

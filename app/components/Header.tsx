@@ -46,7 +46,7 @@ export default function Header({
           {/* Brand */}
           <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 group">
             <div className="p-1.5 sm:p-2 bg-gradient-to-br from-blue-350 to-purple-600 rounded-lg shadow-lg flex-shrink-0">
-              <img src="/zi-logo.svg" alt="ZI PREMIUM SERVICES Logo" className="w-6 h-6 sm:w-8 sm:h-8 object-contain" />
+              <img src="/zi-logo.svg" alt="ZI PREMIUM SERVICES Logo" className="w-6 h-6 sm:w-8 sm:h-8 object-contain" loading="eager" />
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="sm:text-2xl md:text-3xl font-extrabold leading-tight whitespace-nowrap" style={{ fontSize: 'clamp(0.8rem, 4.5vw, 1.5rem)' }}>

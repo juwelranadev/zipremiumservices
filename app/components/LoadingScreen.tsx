@@ -3,125 +3,26 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
-  const [progress, setProgress] = useState(0);
   const [fadeOut, setFadeOut] = useState(false);
-  const [loadingStatus, setLoadingStatus] = useState("Initializing...");
 
   const handleFinish = useCallback(() => {
     onFinish();
   }, [onFinish]);
 
-  // Function to detect internet speed
-  const detectInternetSpeed = async () => {
-    const startTime = Date.now();
-    const imageUrl = "https://picsum.photos/seed/speedtest/100/100.jpg";
-    
-    try {
-      const response = await fetch(imageUrl, { cache: "no-store" });
-      const blob = await response.blob();
-      const endTime = Date.now();
-      const duration = (endTime - startTime) / 1000; // in seconds
-      const fileSize = blob.size / 1024 / 1024; // in MB
-      const speedMbps = (fileSize / duration) * 8; // Convert to Mbps
-      
-      return speedMbps;
-    } catch (error) {
-      return 1; // Default to 1 Mbps if detection fails
-    }
-  };
-
-  // Function to preload critical assets
-  const preloadCriticalAssets = () => {
-    const criticalAssets = [
-      '/zi-logo.svg',
-      '/images/binance-logo.webp',
-      '/images/bkash-logo.webp',
-      '/images/nagad-logo.webp',
-      '/images/bitget-logo.webp',
-      '/images/rocket-logo.webp'
-    ];
-
-    const promises = criticalAssets.map(src => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = src;
-      });
-    });
-
-    return Promise.all(promises);
-  };
-
-  // Function to check if fonts are loaded
-  const checkFontsLoaded = () => {
-    return new Promise((resolve) => {
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => resolve(true));
-      } else {
-        setTimeout(() => resolve(true), 1000); // Fallback
-      }
-    });
-  };
-
   useEffect(() => {
-    const initLoading = async () => {
-      setLoadingStatus("Detecting connection speed...");
-      
-      // Detect internet speed
-      const speed = await detectInternetSpeed();
-      
-      // Calculate base duration based on speed (faster = shorter minimum time)
-      let baseDuration = 2000; // Default for slow connections
-      if (speed > 10) baseDuration = 1500; // Fast connection
-      else if (speed > 5) baseDuration = 2000; // Medium connection
-      else if (speed > 1) baseDuration = 3000; // Slow connection
-      else baseDuration = 4000; // Very slow connection
+    // Simple CSS-based loading with a fixed duration
+    // The progress bar animation is handled entirely by CSS
+    const loadingDuration = 2000; // 2 seconds
 
-      setLoadingStatus("Loading assets...");
-      
-      // Start asset loading in parallel
-      const assetPromise = preloadCriticalAssets();
-      const fontPromise = checkFontsLoaded();
-      
-      // Progress simulation based on actual loading
-      let currentProgress = 0;
-      const progressInterval = setInterval(() => {
-        currentProgress += 2;
-        if (currentProgress >= 85) {
-          clearInterval(progressInterval);
-        }
-        setProgress(currentProgress);
-      }, baseDuration / 42); // Reach 85% by the time assets should be loaded
+    const timer = setTimeout(() => {
+      setFadeOut(true);
+      // Allow fade out animation to complete
+      setTimeout(() => {
+        handleFinish();
+      }, 500);
+    }, loadingDuration);
 
-      // Wait for assets to actually load
-      const [assetsLoaded, fontsLoaded] = await Promise.all([assetPromise, fontPromise]);
-      
-      clearInterval(progressInterval);
-      
-      setLoadingStatus("Finalizing...");
-      
-      // Move to 100% when assets are loaded
-      const finalProgress = setInterval(() => {
-        setProgress((prev) => {
-          const next = prev + 5;
-          if (next >= 100) {
-            clearInterval(finalProgress);
-            
-            // Trigger exit sequence only when 100% is reached and assets are loaded
-            setFadeOut(true);
-            setTimeout(() => {
-              handleFinish();
-            }, 600);
-            
-            return 100;
-          }
-          return next;
-        });
-      }, 50);
-    };
-
-    initLoading();
+    return () => clearTimeout(timer);
   }, [handleFinish]);
 
   return (
@@ -140,6 +41,13 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
           0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
           50% { transform: translateY(-40px) scale(1.2); opacity: 0.3; }
         }
+        @keyframes ls-progress {
+          0% { width: 0%; }
+          100% { width: 100%; }
+        }
+        .ls-progress-bar {
+          animation: ls-progress 2s ease-out forwards;
+        }
       `}} />
       <div
         style={{
@@ -156,7 +64,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
           pointerEvents: fadeOut ? "none" : "auto",
         }}
       >
-        {/* Background particles */}
+        {/* Background particles - using CSS animations instead of JS */}
         <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
           {[
             { w: 200, t: "10%", l: "15%", color: "139,92,246", delay: "0s" },
@@ -195,7 +103,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
             gap: 32,
           }}
         >
-          {/* Logo with spinning rings */}
+          {/* Logo with spinning rings - CSS animations */}
           <div
             style={{
               position: "relative",
@@ -243,7 +151,6 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
               }}
             />
             {/* Logo box */}
-            {/* Logo box */}
             <div
               style={{
                 position: "relative",
@@ -255,7 +162,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
                 justifyContent: "center",
                 borderRadius: 16,
                 backgroundImage: "url('/zi-logo.svg')",
-                backgroundSize: "contain",   // or "cover" if you want it cropped
+                backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 boxShadow: "0 20px 40px rgba(0, 0, 0, 0.25)",
@@ -292,7 +199,7 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
             </p>
           </div>
 
-          {/* Progress bar */}
+          {/* Progress bar - Pure CSS animation */}
           <div style={{ width: "min(320px, 80vw)", display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
             <div
               style={{
@@ -304,12 +211,11 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
               }}
             >
               <div
+                className="ls-progress-bar"
                 style={{
                   height: "100%",
                   borderRadius: 9999,
-                  width: `${progress}%`,
                   background: "linear-gradient(90deg, #fb923c, #ec4899, #8b5cf6)",
-                  transition: "width 100ms linear",
                   boxShadow: "0 0 12px rgba(236, 72, 153, 0.4)",
                 }}
               />
@@ -322,11 +228,11 @@ export default function LoadingScreen({ onFinish }: { onFinish: () => void }) {
                 letterSpacing: "0.1em",
               }}
             >
-              {loadingStatus} {Math.round(progress)}%
+              Loading...
             </span>
           </div>
 
-          {/* Animated dots */}
+          {/* Animated dots - CSS only */}
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             {[0, 0.2, 0.4].map((delay) => (
               <span

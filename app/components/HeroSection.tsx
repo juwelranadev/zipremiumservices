@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
     ShoppingCart,
@@ -159,7 +160,7 @@ export default function HeroSection({ heroRef }: HeroSectionProps) {
                                 {promoOffers.map((offer, idx) => (
                                     <div key={idx} className="group relative rounded-2xl overflow-hidden bg-slate-800 hover:border-slate-600 transition-all duration-300 hover:scale-[1.02] flex-shrink-0 border border-slate-700">
                                         <div className="w-full h-full bg-slate-800 rounded-2xl">
-                                            <img src={offer.image} alt={offer.title} className="w-full h-32 object-cover rounded-t-2xl" />
+                                            <Image src={offer.image} alt={offer.title} width={280} height={128} className="w-full h-32 object-cover rounded-t-2xl" loading="lazy" />
                                             <div className="p-3">
                                                 <p className="text-white font-bold text-sm mb-1">{offer.title}</p>
                                                 <p className="text-slate-300 text-xs">{offer.desc}</p>
@@ -363,159 +364,54 @@ export default function HeroSection({ heroRef }: HeroSectionProps) {
                                     <div className="relative z-10 flex items-center gap-4">
     {/* We Accept Badge */}
     <div className="flex-shrink-0">
-        <img 
-            src="/images/we-accept-badge.png" 
-            alt="We Accept" 
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover shadow-md"
-        />
+<Image 
+                            src="/images/we-accept-badge.png" 
+                            alt="We Accept" 
+                            width={80}
+                            height={80}
+                            className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover shadow-md"
+                            loading="lazy"
+                        />
     </div>
     
     {/* Content */}
     <div className="flex-1 min-w-0 overflow-hidden">
         {/* Desktop: Single line layout */}
         <div className="hidden lg:flex items-center gap-2 overflow-hidden">
-            <img 
-                src="/images/bkash-logo.webp" 
-                alt="bKash" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/nagad-logo.webp" 
-                alt="Nagad" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/rocket-logo.webp" 
-                alt="Rocket" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/binance-logo.webp" 
-                alt="Binance" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/bitget-logo.webp" 
-                alt="Bitget" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/bybit-logo.webp" 
-                alt="Bybit" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/mexc-logo.webp" 
-                alt="MEXC" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/metamask-logo.webp" 
-                alt="MetaMask" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
-            <img 
-                src="/images/btc-logo.webp" 
-                alt="Bitcoin" 
-                className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo"
-            />
+            <Image src="/images/bkash-logo.webp" alt="bKash" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/nagad-logo.webp" alt="Nagad" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/rocket-logo.webp" alt="Rocket" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/binance-logo.webp" alt="Binance" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/bitget-logo.webp" alt="Bitget" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/bybit-logo.webp" alt="Bybit" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/mexc-logo.webp" alt="MEXC" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/metamask-logo.webp" alt="MetaMask" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
+            <Image src="/images/btc-logo.webp" alt="Bitcoin" width={56} height={56} className="w-14 h-14 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0 payment-logo" loading="lazy" />
         </div>
         
         {/* Mobile: Single line marquee */}
         <div className="lg:hidden overflow-hidden w-full">
             <div className="flex animate-marquee-right-to-left">
                 <div className="flex gap-2 items-center">
-                    <img 
-                        src="/images/bkash-logo.webp" 
-                        alt="bKash" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/nagad-logo.webp" 
-                        alt="Nagad" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/rocket-logo.webp" 
-                        alt="Rocket" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/binance-logo.webp" 
-                        alt="Binance" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/bitget-logo.webp" 
-                        alt="Bitget" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/bybit-logo.webp" 
-                        alt="Bybit" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/mexc-logo.webp" 
-                        alt="MEXC" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/metamask-logo.webp" 
-                        alt="MetaMask" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/btc-logo.webp" 
-                        alt="Bitcoin" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
+                    <Image src="/images/bkash-logo.webp" alt="bKash" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/nagad-logo.webp" alt="Nagad" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/rocket-logo.webp" alt="Rocket" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/binance-logo.webp" alt="Binance" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/bitget-logo.webp" alt="Bitget" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/bybit-logo.webp" alt="Bybit" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/mexc-logo.webp" alt="MEXC" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/metamask-logo.webp" alt="MetaMask" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/btc-logo.webp" alt="Bitcoin" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
                     {/* Duplicate for seamless loop */}
-                    <img 
-                        src="/images/bkash-logo.webp" 
-                        alt="bKash" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/nagad-logo.webp" 
-                        alt="Nagad" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/rocket-logo.webp" 
-                        alt="Rocket" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/binance-logo.webp" 
-                        alt="Binance" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/bitget-logo.webp" 
-                        alt="Bitget" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/bybit-logo.webp" 
-                        alt="Bybit" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/mexc-logo.webp" 
-                        alt="MEXC" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/metamask-logo.webp" 
-                        alt="MetaMask" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
-                    <img 
-                        src="/images/btc-logo.webp" 
-                        alt="Bitcoin" 
-                        className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0"
-                    />
+                    <Image src="/images/bkash-logo.webp" alt="bKash" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/nagad-logo.webp" alt="Nagad" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/rocket-logo.webp" alt="Rocket" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/binance-logo.webp" alt="Binance" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/bitget-logo.webp" alt="Bitget" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/bybit-logo.webp" alt="Bybit" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/mexc-logo.webp" alt="MEXC" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/metamask-logo.webp" alt="MetaMask" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
+                    <Image src="/images/btc-logo.webp" alt="Bitcoin" width={40} height={40} className="w-10 h-10 rounded-lg object-cover border border-white/20 shadow-md flex-shrink-0" loading="lazy" />
                 </div>
             </div>
         </div>
