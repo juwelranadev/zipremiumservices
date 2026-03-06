@@ -637,10 +637,10 @@ export default function HeroSection({ heroRef }: HeroSectionProps) {
                     margin-right: 0px;
                 }
 
-                .cta:hover .second {
-                    transition: 0.5s;
-                    margin-right: 45px;
-                }
+.cta:hover .second {
+                transition: 0.5s;
+                margin-right: 15px;
+            }
 
                 .span {
                     transform: skewX(15deg);
