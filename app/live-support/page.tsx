@@ -660,7 +660,7 @@ export default function LiveSupportPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex items-center justify-center gap-3 mb-2">
               <div className="p-1.5 bg-gradient-to-br from-blue-350 to-purple-600 rounded-lg shadow-lg flex-shrink-0">
-                <img src="/zi-logo.svg" alt="ZI PREMIUM SERVICES Logo" className="w-7 h-7 object-contain" loading="lazy" />
+                <img src="/zi-logo.svg" alt="ZI PREMIUM SERVICES Logo" className="w-7 h-7 object-contain" />
               </div>
               <div className="text-left">
                 <p className="font-extrabold leading-tight">

@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Script from "next/script";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
   ShoppingCart,
@@ -465,13 +464,10 @@ export default function MainShop({ categorySlug = "all" }: { categorySlug?: stri
           <div className="relative w-32 h-32 flex items-center justify-center hover:scale-105 transition-all duration-300">
 
             {/* Custom Icon */}
-            <Image 
+            <img 
               src="/images/live-button-floating.png" 
               alt="Live Support" 
-              width={112}
-              height={112}
               className="w-28 h-28 object-contain"
-              loading="lazy"
             />
 
           </div>
@@ -585,7 +581,7 @@ export default function MainShop({ categorySlug = "all" }: { categorySlug?: stri
         <div className="p-4 bg-black/40 border-t border-white/10">
           <div className="flex items-center space-x-2 group">
             <div className="p-1.5 bg-gradient-to-br from-blue-350 to-purple-600 rounded-lg shadow-lg flex-shrink-0">
-              <img src="/zi-logo.svg" alt="ZI Logo" className="w-5 h-5 object-contain" loading="lazy" />
+              <img src="/zi-logo.svg" alt="ZI Logo" className="w-5 h-5 object-contain" />
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="text-sm font-black leading-tight whitespace-nowrap">
