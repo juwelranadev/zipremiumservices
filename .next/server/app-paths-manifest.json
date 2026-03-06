@@ -1,0 +1,7 @@
+{
+  "/[slug]/page": "app/[slug]/page.js",
+  "/page": "app/page.js",
+  "/sign-up/page": "app/sign-up/page.js",
+  "/sign-in/page": "app/sign-in/page.js",
+  "/admin/(dashboard)/settings/page": "app/admin/(dashboard)/settings/page.js"
+}

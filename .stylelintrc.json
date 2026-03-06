@@ -1,0 +1,16 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-tailwindcss"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "comment-empty-line-before": null,
+    "length-zero-no-unit": null,
+    "color-function-alias-notation": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "rule-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "media-feature-range-notation": null,
+    "selector-class-pattern": null,
+    "selector-pseudo-class-no-unknown": null
+  }
+}
