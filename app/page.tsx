@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import MainShop from "./components/MainShop";
 import { useShopContext } from "./context/ShopContext";
+import PremiumLanding from "./components/landing/PremiumLanding";
 
 export default function Home() {
   const { setView } = useShopContext();
@@ -11,5 +11,5 @@ export default function Home() {
     setView("home");
   }, [setView]);
 
-  return <MainShop categorySlug="all" />;
+  return <PremiumLanding />;
 }
